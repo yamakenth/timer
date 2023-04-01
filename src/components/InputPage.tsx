@@ -29,7 +29,6 @@ export default function inputPage({
 }: InputPageProps) {
   return (
     <>
-      <div>icon: Timer</div>
       <div>{`
       ${time.slice(0, 2).join("")}h
       ${time.slice(2, 4).join("")}m

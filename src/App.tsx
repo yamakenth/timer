@@ -43,6 +43,7 @@ function App() {
     <div className="App">
       <ThemeProvider theme={darkTheme}>
         <CssBaseline />
+        <div>icon: Timer</div>
         {countdown ? (
           <div>{JSON.stringify(time)}</div>
         ) : (
