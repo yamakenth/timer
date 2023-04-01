@@ -18,12 +18,14 @@ interface InputPageProps {
   time: Number[];
   handleNumberInput: React.MouseEventHandler<HTMLButtonElement>;
   handleBackspace: React.MouseEventHandler<HTMLButtonElement>;
+  handleCountdown: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 export default function inputPage({
   time,
   handleNumberInput,
   handleBackspace,
+  handleCountdown,
 }: InputPageProps) {
   return (
     <>
@@ -40,6 +42,7 @@ export default function inputPage({
         ))}
         <button onClick={handleBackspace}>&lt;</button>
       </div>
+      <button onClick={handleCountdown}>Go</button>
     </>
   );
 }

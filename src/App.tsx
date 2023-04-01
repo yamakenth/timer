@@ -35,17 +35,22 @@ function App() {
     setTime(newTime);
   }
 
+  function handleCountDown(): void {
+    setCountdown(true);
+  }
+
   return (
     <div className="App">
       <ThemeProvider theme={darkTheme}>
         <CssBaseline />
         {countdown ? (
-          <div>countdown</div>
+          <div>{JSON.stringify(time)}</div>
         ) : (
           <InputPage
             time={time}
             handleNumberInput={handleNumberInput}
             handleBackspace={handleBackspace}
+            handleCountdown={handleCountDown}
           />
         )}
       </ThemeProvider>
