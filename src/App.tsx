@@ -1,6 +1,7 @@
 import { CssBaseline, Theme, ThemeProvider, createTheme } from "@mui/material";
 import React, { useState } from "react";
 import InputPage from "./components/InputPage";
+import CountdownPage from "./components/CountdownPage";
 
 const darkTheme: Theme = createTheme({
   palette: {
@@ -45,7 +46,7 @@ function App() {
         <CssBaseline />
         <div>icon: Timer</div>
         {countdown ? (
-          <div>{JSON.stringify(time)}</div>
+          <CountdownPage time={time} />
         ) : (
           <InputPage
             time={time}
