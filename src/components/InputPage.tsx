@@ -64,6 +64,7 @@ export default function inputPage({
         aria-label="start"
         size="large"
         disabled={time.every((item) => item === 0)}
+        color="success"
       >
         <PlayCircleFilled fontSize="large" />
       </IconButton>

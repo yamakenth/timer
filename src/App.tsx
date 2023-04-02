@@ -46,7 +46,7 @@ function App() {
   }
 
   function handleCountDown(): void {
-    setCountdown(true);
+    setCountdown(!countdown);
   }
 
   return (
@@ -61,7 +61,7 @@ function App() {
             </Typography>
           </header>
           {countdown ? (
-            <CountdownPage time={time} />
+            <CountdownPage time={time} handleCountdown={handleCountDown} />
           ) : (
             <InputPage
               time={time}
