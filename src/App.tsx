@@ -8,7 +8,6 @@ import {
 import React, { useState } from "react";
 import InputPage from "./components/InputPage";
 import CountdownPage from "./components/CountdownPage";
-import "./App.css";
 import { HourglassBottom } from "@mui/icons-material";
 import { blue } from "@mui/material/colors";
 
@@ -50,11 +49,39 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div
+      className="App"
+      style={{
+        width: "100vw",
+        height: "100vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
       <ThemeProvider theme={darkTheme}>
         <CssBaseline />
-        <div className="timer" style={{ color: blue[50] }}>
-          <header>
+        <div
+          style={{
+            color: blue[50],
+            padding: "12px",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+            alignItems: "center",
+            height: "460px",
+            width: "280px",
+          }}
+        >
+          <header
+            style={{
+              alignSelf: "flex-start",
+              display: "flex",
+              alignItems: "center",
+              gap: "2px",
+              marginBottom: "24px",
+            }}
+          >
             <HourglassBottom />
             <Typography variant="h5" component="h1">
               Timer

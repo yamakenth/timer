@@ -1,5 +1,4 @@
 import React from "react";
-import "./InputPage.css";
 import { Button, IconButton, Typography } from "@mui/material";
 import { Backspace, PlayCircleFilled } from "@mui/icons-material";
 
@@ -32,12 +31,23 @@ export default function inputPage({
 }: InputPageProps) {
   return (
     <>
-      <Typography className="display" variant="subtitle1" fontSize={36}>{`
+      <Typography
+        variant="subtitle1"
+        fontSize={36}
+        style={{ marginBottom: "16px" }}
+      >{`
         ${time.slice(0, 2).join("")}h
         ${time.slice(2, 4).join("")}m
         ${time.slice(4, 6).join("")}s
       `}</Typography>
-      <div className="input-buttons">
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(3, 1fr)",
+          gap: "10px 20px",
+          marginBottom: "16px",
+        }}
+      >
         {inputValues.map((val, idx) => (
           <Button
             variant="text"
