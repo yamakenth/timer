@@ -1,4 +1,7 @@
 import React from "react";
+import "./InputPage.css";
+import { Button, IconButton, Typography } from "@mui/material";
+import { Backspace, PlayCircleFilled } from "@mui/icons-material";
 
 const inputValues: string[] = [
   "1",
@@ -29,19 +32,41 @@ export default function inputPage({
 }: InputPageProps) {
   return (
     <>
-      <div>{`
-      ${time.slice(0, 2).join("")}h
-      ${time.slice(2, 4).join("")}m
-      ${time.slice(4, 6).join("")}s`}</div>
-      <div>
+      <Typography className="display" variant="subtitle1" fontSize={36}>{`
+        ${time.slice(0, 2).join("")}h
+        ${time.slice(2, 4).join("")}m
+        ${time.slice(4, 6).join("")}s
+      `}</Typography>
+      <div className="input-buttons">
         {inputValues.map((val, idx) => (
-          <button key={idx} onClick={handleNumberInput}>
+          <Button
+            variant="text"
+            size="large"
+            key={idx}
+            onClick={handleNumberInput}
+            style={{ fontSize: 18 }}
+          >
             {val}
-          </button>
+          </Button>
         ))}
-        <button onClick={handleBackspace}>&lt;</button>
+        <Button
+          variant="text"
+          size="large"
+          onClick={handleBackspace}
+          aria-label="delete"
+          color="primary"
+        >
+          <Backspace />
+        </Button>
       </div>
-      <button onClick={handleCountdown}>Go</button>
+      <IconButton
+        onClick={handleCountdown}
+        aria-label="start"
+        size="large"
+        disabled={time.every((item) => item === 0)}
+      >
+        <PlayCircleFilled fontSize="large" />
+      </IconButton>
     </>
   );
 }

@@ -1,7 +1,16 @@
-import { CssBaseline, Theme, ThemeProvider, createTheme } from "@mui/material";
+import {
+  CssBaseline,
+  Theme,
+  ThemeProvider,
+  Typography,
+  createTheme,
+} from "@mui/material";
 import React, { useState } from "react";
 import InputPage from "./components/InputPage";
 import CountdownPage from "./components/CountdownPage";
+import "./App.css";
+import { HourglassBottom } from "@mui/icons-material";
+import { blue } from "@mui/material/colors";
 
 const darkTheme: Theme = createTheme({
   palette: {
@@ -18,7 +27,7 @@ function App() {
   function handleNumberInput(
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ): void {
-    const val = (event.target as Element).innerHTML;
+    const val = (event.target as Element).textContent;
 
     let newTime;
     if (val !== "00") {
@@ -44,17 +53,24 @@ function App() {
     <div className="App">
       <ThemeProvider theme={darkTheme}>
         <CssBaseline />
-        <div>icon: Timer</div>
-        {countdown ? (
-          <CountdownPage time={time} />
-        ) : (
-          <InputPage
-            time={time}
-            handleNumberInput={handleNumberInput}
-            handleBackspace={handleBackspace}
-            handleCountdown={handleCountDown}
-          />
-        )}
+        <div className="timer" style={{ color: blue[50] }}>
+          <header>
+            <HourglassBottom />
+            <Typography variant="h5" component="h1">
+              Timer
+            </Typography>
+          </header>
+          {countdown ? (
+            <CountdownPage time={time} />
+          ) : (
+            <InputPage
+              time={time}
+              handleNumberInput={handleNumberInput}
+              handleBackspace={handleBackspace}
+              handleCountdown={handleCountDown}
+            />
+          )}
+        </div>
       </ThemeProvider>
     </div>
   );
