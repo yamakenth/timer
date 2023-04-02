@@ -1,6 +1,6 @@
 import { Cancel } from "@mui/icons-material";
 import { Alert, CircularProgress, IconButton, Typography } from "@mui/material";
-import { green, red, yellow } from "@mui/material/colors";
+import { blueGrey, green, red, yellow } from "@mui/material/colors";
 import React, { useState, useEffect } from "react";
 
 interface CountdownPageProps {
@@ -40,6 +40,17 @@ export default function CountdownPage({
           width: "220px",
         }}
       >
+        <CircularProgress
+          variant="determinate"
+          value={100}
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            color: blueGrey[500],
+          }}
+          size="100%"
+        />
         <CircularProgress
           variant="determinate"
           value={progress}
