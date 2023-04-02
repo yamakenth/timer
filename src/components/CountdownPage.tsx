@@ -1,5 +1,6 @@
 import { Cancel } from "@mui/icons-material";
-import { Alert, IconButton, Typography } from "@mui/material";
+import { Alert, CircularProgress, IconButton, Typography } from "@mui/material";
+import { green, red, yellow } from "@mui/material/colors";
 import React, { useState, useEffect } from "react";
 
 interface CountdownPageProps {
@@ -13,6 +14,10 @@ export default function CountdownPage({
 }: CountdownPageProps) {
   const [countdown, setCountdown] = useState(calculateCountdown(time));
 
+  const progress = (1 - countdown / calculateCountdown(time)) * 100;
+  const progressColor =
+    progress < 75 ? green[500] : progress < 90 ? yellow[500] : red[500];
+
   useEffect(() => {
     const timeout = setTimeout(() => {
       setCountdown(countdown - 1);
@@ -25,11 +30,33 @@ export default function CountdownPage({
 
   return (
     <>
-      <Typography variant="subtitle1" fontSize={28}>{`
-        ${formatTime(countdown)[0]}h
-        ${formatTime(countdown)[1]}m
-        ${formatTime(countdown)[2]}s
-      `}</Typography>
+      <div
+        style={{
+          position: "relative",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "220px",
+          width: "220px",
+        }}
+      >
+        <CircularProgress
+          variant="determinate"
+          value={progress}
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            color: progressColor,
+          }}
+          size="100%"
+        />
+        <Typography variant="subtitle1" fontSize={28}>{`
+          ${formatTime(countdown)[0]}h
+          ${formatTime(countdown)[1]}m
+          ${formatTime(countdown)[2]}s
+        `}</Typography>
+      </div>
       <IconButton
         onClick={handleCountdown}
         aria-label="cancel"
