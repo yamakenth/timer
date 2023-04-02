@@ -48,6 +48,24 @@ function App() {
     setCountdown(!countdown);
   }
 
+  function handleKeypress(event: KeyboardEvent): void {
+    if (event.code === "Enter" && !time.every((item) => item === 0)) {
+      handleCountDown();
+    }
+
+    if (event.code === "Backspace") {
+      const newTime = [...time];
+      newTime.unshift(0);
+      newTime.pop();
+      setTime(newTime);
+    }
+
+    const key = parseInt(event.key);
+    if (!isNaN(key)) {
+      setTime([...time, key].slice(1));
+    }
+  }
+
   return (
     <div
       className="App"
@@ -95,6 +113,7 @@ function App() {
               handleNumberInput={handleNumberInput}
               handleBackspace={handleBackspace}
               handleCountdown={handleCountDown}
+              handleKeypress={handleKeypress}
             />
           )}
         </div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button, IconButton, Typography } from "@mui/material";
 import { Backspace, PlayCircleFilled } from "@mui/icons-material";
 
@@ -21,14 +21,23 @@ interface InputPageProps {
   handleNumberInput: React.MouseEventHandler<HTMLButtonElement>;
   handleBackspace: React.MouseEventHandler<HTMLButtonElement>;
   handleCountdown: React.MouseEventHandler<HTMLButtonElement>;
+  handleKeypress: any;
 }
 
-export default function inputPage({
+export default function InputPage({
   time,
   handleNumberInput,
   handleBackspace,
   handleCountdown,
+  handleKeypress,
 }: InputPageProps) {
+  useEffect(() => {
+    document.addEventListener("keydown", handleKeypress);
+    return () => {
+      document.removeEventListener("keydown", handleKeypress);
+    };
+  }, [handleKeypress]);
+
   return (
     <>
       <Typography
